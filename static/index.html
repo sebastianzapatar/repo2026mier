@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - API y Presentación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6c5ce7;
+            --primary-hover: #5b4bc4;
+            --secondary: #00cec9;
+            --dark: #2d3436;
+            --light: #f5f6fa;
+            --success: #00b894;
+            --error: #d63031;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+            color: var(--dark);
+        }
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card h2 {
+            margin-top: 0;
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+        }
+        /* Estilos del calculador */
+        .api-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .input-group input {
+            flex: 1;
+            padding: 12px;
+            border: 2px solid #dfe6e9;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: border-color 0.3s;
+        }
+        .input-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+        .btn-success {
+            background-color: var(--success);
+        }
+        .btn-success:hover {
+            background-color: #00a884;
+        }
+        #result-box {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--light);
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            min-height: 24px;
+        }
+        .success-text { color: var(--success); }
+        .error-text { color: var(--error); }
+        .presentation-preview {
+            background: #2d3436;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Implementación CI/CD y FastAPI</h1>
+        <p>Prueba el backend en vivo y explora la presentación del proyecto</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Tarjeta del Frontend para la API -->
+        <div class="card">
+            <h2>Prueba de la API (Calculadora)</h2>
+            <p>Esta interfaz gráfica se conecta directamente al endpoint <code>POST /api/add</code> de tu backend en FastAPI para sumar dos números.</p>
+            
+            <form id="calc-form" class="api-form">
+                <div class="input-group">
+                    <input type="number" id="numA" placeholder="Número A" required step="any">
+                    <span style="font-size: 1.5rem; font-weight: bold;">+</span>
+                    <input type="number" id="numB" placeholder="Número B" required step="any">
+                </div>
+                <button type="submit" class="btn">Calcular Suma</button>
+            </form>
+
+            <div id="result-box">Esperando datos...</div>
+
+            <div style="margin-top: 30px; text-align: center;">
+                <a href="/docs" target="_blank" class="btn btn-success" style="width: 80%;">Ver Docs Swagger UI</a>
+            </div>
+        </div>
+
+        <!-- Tarjeta de la Presentación -->
+        <div class="card">
+            <h2>Presentación: GitHub Actions</h2>
+            <p>Explora la presentación completa y bien organizada con toda la información extraída de tu archivo PPTX original.</p>
+            
+            <div class="presentation-preview">
+                <h3>GitHub Actions</h3>
+                <p style="opacity: 0.8;">CI/CD Integrado • Buenas Prácticas • Automatización</p>
+                <div style="font-size: 3rem; margin: 10px 0;">🚀</div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+                <a href="/static/presentacion.html" class="btn" target="_blank">Abrir Presentación Interactiva (Reveal.js)</a>
+                <a href="/static/Github%20Actions.pptx" download class="btn" style="background-color: #636e72;">Descargar Archivo .pptx</a>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Lógica de conexión con la API
+        document.getElementById('calc-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const a = parseFloat(document.getElementById('numA').value);
+            const b = parseFloat(document.getElementById('numB').value);
+            const resultBox = document.getElementById('result-box');
+            
+            resultBox.className = ''; // reset classes
+            resultBox.style.color = '#e17055'; 
+            resultBox.innerText = "Calculando...";
+
+            try {
+                const response = await fetch('/api/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ a: a, b: b })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    resultBox.className = 'success-text';
+                    resultBox.style.color = '';
+                    resultBox.innerText = `Resultado: ${data.result}`;
+                } else {
+                    resultBox.className = 'error-text';
+                    resultBox.style.color = '';
+                    resultBox.innerText = "Error en la validación de la API.";
+                }
+            } catch (err) {
+                resultBox.className = 'error-text';
+                resultBox.style.color = '';
+                resultBox.innerText = "Error de conexión con el servidor.";
+            }
+        });
+    </script>
+</body>
+</html>
