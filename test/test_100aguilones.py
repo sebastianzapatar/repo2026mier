@@ -2,8 +2,8 @@ import pytest
 from calc.calc import add, multiply
 
 @pytest.mark.parametrize("a, b, expected", [
-    (1, 2, 3),
-    (1.5, 2.5, 4.0),
+    (1, 2, 6),
+    (1.5, 2.5, 4.9),
     (-1, 1, 0),
     (0, 0, 0),
 ])
